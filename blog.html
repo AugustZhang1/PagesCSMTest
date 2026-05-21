@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog - My Test Site</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .blog-post {
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+      border-bottom: 1px solid #ddd;
+    }
+    .blog-post img {
+      max-width: 100%;
+      height: auto;
+      margin: 1rem 0;
+      border-radius: 8px;
+    }
+    .blog-post-date {
+      color: #666;
+      font-size: 0.9rem;
+      margin: 0.5rem 0;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <span class="logo">MyTestSite</span>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="blog.html">Blog</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="section">
+    <h1>Blog</h1>
+    <div id="blog-container"></div>
+  </section>
+
+  <footer>
+    <p id="footer-text">Loading...</p>
+  </footer>
+
+  <script>
+    // Fetch and display footer from main content
+    fetch('content.json')
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('footer-text').innerText = data.footerText;
+      })
+      .catch(error => console.error('Error loading footer:', error));
+
+    // Fetch and display blog posts
+    fetch('blog.json')
+      .then(response => response.json())
+      .then(data => {
+        const container = document.getElementById('blog-container');
+        data.posts.forEach(post => {
+          const postEl = document.createElement('article');
+          postEl.className = 'blog-post';
+          postEl.innerHTML = `
+            <h2>${post.title}</h2>
+            <div class="blog-post-date">${new Date(post.date).toLocaleDateString()}</div>
+            ${post.image ? `<img src="${post.image}" alt="${post.title}">` : ''}
+            <p>${post.body}</p>
+          `;
+          container.appendChild(postEl);
+        });
+      })
+      .catch(error => console.error('Error loading blog posts:', error));
+  </script>
+
+</body>
+</html>
