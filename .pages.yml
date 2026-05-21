@@ -1,5 +1,3 @@
-media:
-  folder: public/images
 content:
   - name: homepage
     label: Homepage Content
