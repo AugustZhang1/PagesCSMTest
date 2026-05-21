@@ -1,5 +1,6 @@
 media:
-  folder: assets/images
+  input: assets/images
+  output: assets/images
 content:
   - name: homepage
     label: Homepage Content
