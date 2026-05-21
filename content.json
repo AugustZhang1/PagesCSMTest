@@ -1,0 +1,23 @@
+{
+  "hero": {
+    "title": "Welcome to My Test Website",
+    "subtitle": "Built with plain HTML & CSS — hosted free on GitHub Pages."
+  },
+  "aboutText": "Test description for the about section.",
+  "features": [
+    {
+      "title": "Fast Hosting",
+      "description": "Static files served directly from GitHub's CDN."
+    },
+    {
+      "title": "Secure",
+      "description": "Free HTTPS included automatically with every site."
+    },
+    {
+      "title": "Free",
+      "description": "No credit card, no monthly bill — ever."
+    }
+  ],
+  "contactEmail": "Test@gmail.com",
+  "footerText": "© 2026 My Test Site"
+}

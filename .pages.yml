@@ -1,12 +1,33 @@
-media: media
-
+media:
+  folder: public/images
 content:
-  - name: pages
-    label: Pages
-    type: collection
-    path: docs
+  - name: homepage
+    label: Homepage Content
+    type: file
+    file: content.json
     fields:
-      - name: title
+      - name: hero
+        label: Hero Section
+        type: object
+        fields:
+          - name: title
+            type: string
+          - name: subtitle
+            type: string
+      - name: aboutText
+        label: About Text
+        type: text
+      - name: features
+        label: Feature Cards
+        type: list
+        fields:
+          - name: title
+            type: string
+          - name: description
+            type: text
+      - name: contactEmail
+        label: Contact Email
         type: string
-      - name: body
-        type: rich-text
+      - name: footerText
+        label: Footer Copyright
+        type: string

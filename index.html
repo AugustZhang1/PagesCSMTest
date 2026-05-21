@@ -10,7 +10,7 @@
 
   <header>
     <nav>
-      <span class="logo">  MyTestSite</span>
+      <span class="logo">MyTestSite</span>
       <ul>
         <li><a href="#about">About</a></li>
         <li><a href="#features">Features</a></li>
@@ -20,42 +20,59 @@
   </header>
 
   <section class="hero">
-    <h1>Welcome to My Test Website</h1>
-    <p>Built with plain HTML & CSS — hosted free on GitHub Pages.</p>
+    <h1 id="hero-title">Loading...</h1>
+    <p id="hero-subtitle">Loading...</p>
     <a href="#about" class="btn">Learn More</a>
   </section>
 
   <section id="about" class="section">
     <h2>About</h2>
-    <p>Test</p>
+    <p id="about-text">Loading...</p>
   </section>
 
   <section id="features" class="section alt">
     <h2>Features</h2>
-    <div class="cards">
-      <div class="card">
-        <h3>Test</h3>
-        <p>Static files served directly from GitHub's CDN.</p>
-      </div>
-      <div class="card">
-        <h3>Test</h3>
-        <p>Free HTTPS included automatically with every site.</p>
-      </div>
-      <div class="card">
-        <h3>Test</h3>
-        <p>No credit card, no monthly bill — ever.</p>
-      </div>
-    </div>
+    <div class="cards" id="features-container"></div>
   </section>
 
   <section id="contact" class="section">
     <h2>Contact</h2>
-    <p>Reach me at <a href="mailto:hello@example.com">Test@gmail.com</a></p>
+    <p>Reach me at <a id="contact-email" href="mailto:">Loading...</a></p>
   </section>
 
   <footer>
-    <p>Test</p>
+    <p id="footer-text">Loading...</p>
   </footer>
+
+  <script>
+    fetch('content.json')
+      .then(response => response.json())
+      .then(data => {
+        // 1. Populate standard text fields
+        document.getElementById('hero-title').innerText = data.hero.title;
+        document.getElementById('hero-subtitle').innerText = data.hero.subtitle;
+        document.getElementById('about-text').innerText = data.aboutText;
+        document.getElementById('footer-text').innerText = data.footerText;
+        
+        // 2. Populate the contact email and href link
+        const emailEl = document.getElementById('contact-email');
+        emailEl.innerText = data.contactEmail;
+        emailEl.href = `mailto:${data.contactEmail}`;
+
+        // 3. Dynamically build the Feature Cards
+        const featuresContainer = document.getElementById('features-container');
+        data.features.forEach(feature => {
+          const card = document.createElement('div');
+          card.className = 'card';
+          card.innerHTML = `
+            <h3>${feature.title}</h3>
+            <p>${feature.description}</p>
+          `;
+          featuresContainer.appendChild(card);
+        });
+      })
+      .catch(error => console.error('Error loading content:', error));
+  </script>
 
 </body>
 </html>
