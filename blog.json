@@ -1,10 +1,10 @@
 {
   "posts": [
     {
-      "title": "Welcome to Our Blog",
+      "title": "My First Post",
       "date": "2026-05-21",
-      "image": "assets/images/post1.jpg",
-      "body": "This is the first blog post. You can edit this content through Pages CMS by uploading a new image and updating the title, date, and body text."
+      "image": "",
+      "body": "This is the first blog post edited from Pages CMS!"
     }
   ]
 }
