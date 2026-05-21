@@ -29,3 +29,19 @@ content:
       - name: footerText
         label: Footer Copyright
         type: string
+collections:
+  - name: posts
+    label: Blog Posts
+    folder: docs
+    format: frontmatter
+    extension: md
+    fields:
+      - name: title
+        label: Title
+        type: string
+      - name: date
+        label: Date
+        type: date
+      - name: body
+        label: Content
+        type: markdown
