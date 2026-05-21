@@ -5,7 +5,7 @@ content:
   - name: homepage
     label: Homepage Content
     type: file
-    file: content.json
+    path: content.json
     fields:
       - name: hero
         label: Hero Section
@@ -20,7 +20,8 @@ content:
         type: text
       - name: features
         label: Feature Cards
-        type: list
+        type: object
+        list: true
         fields:
           - name: title
             type: string
@@ -35,11 +36,12 @@ content:
   - name: blog
     label: Blog Posts
     type: file
-    file: blog.json
+    path: blog.json
     fields:
       - name: posts
         label: Blog Posts
-        type: list
+        type: object
+        list: true
         fields:
           - name: title
             label: Title
